@@ -3,7 +3,7 @@
 
 // ── Page setup ──────────────────────────────────────────────────────
 #set page(
-  paper: "presentation-4-3",
+  paper: "presentation-16-9",
   margin: (x: 0.8cm, y: 0.7cm),
   fill: white,
 )
@@ -274,7 +274,7 @@
   let badge-el = if row.status == "win" { win-badge() }
     else if row.status == "gap" { gap-badge() }
     else { partial-badge() }
-  
+
   block(width: 100%, inset: (x: 8pt, y: 7pt), stroke: (bottom: 0.5pt + border))[
     #grid(
       columns: (18%, 26%, 22%, 34%),
@@ -429,7 +429,7 @@
     - *GDPR*, Regulation (EU) 2016/679.
     - *India DPDP Act*, Act No. 40 of 2023.
     - *RBI Directive* on Payment Data Storage (2018).
-    
+
     #v(1em)
     *Technical Standards* \
     #v(0.4em)
@@ -445,7 +445,7 @@
     - *US DoD IG*, Signalgate Report (December 2025).
     - *NPCI*, UPI Monthly Statistics (August 2025).
     - *Meta Newsroom*, Threads ActivityPub Interop (2024).
-    
+
     #v(1em)
     *Sovereign Deployments* \
     #v(0.4em)
