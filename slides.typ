@@ -233,7 +233,7 @@
 #subtitle[UPI, Aadhaar, ONDC — India's open protocol advantage.]
 #divider()
 
-#bullet(dot-color: green, [*UPI:* the world's most successful open payments protocol], sub: [20+ billion transactions in a single month (August 2025). Built on open standards — any bank, any app, true interoperability. Now expanding internationally.])
+#bullet(dot-color: green, [*UPI:* the world's most successful open payments protocol], sub: [20.01 billion transactions in a single month (August 2025). Built on open standards — any bank, any app, true interoperability. Now expanding internationally.])
 #bullet(dot-color: green, [*ONDC:* open e-commerce, not a marketplace], sub: [A set of open standards for commerce — the same logic as UPI, applied to retail. Any seller, any buyer app, no gatekeeper.])
 #bullet(dot-color: green, [*The EU envies this. Now apply it to communications.* ], sub: [India pioneered open protocols for payments and identity. The gap is messaging and social media — exactly what the DMA is forcing in Europe.])
 
@@ -249,9 +249,13 @@
 #let proto-rows = (
   (domain: "Messaging",    protocol: "Matrix / XMPP",              proto-sub: "Federated, E2EE, open standard",        status: "gap",     india: "No sovereign stack",      india-sub: "WhatsApp dominates entirely"),
   (domain: "Social media", protocol: "ActivityPub / AT Protocol",  proto-sub: "Fediverse, Mastodon, Bluesky, Threads", status: "gap",     india: "No open alternative",     india-sub: "EU expanding DMA here in 2026"),
-  (domain: "Payments",     protocol: "UPI",                        proto-sub: "Open, interoperable, sovereign",        status: "win",     india: "20B+ txns/month",         india-sub: "World's best open payments protocol"),
+  (domain: "Payments",     protocol: "UPI",                        proto-sub: "Open, interoperable, sovereign",        status: "win",     india: "20.01B txns/month",       india-sub: "World's best open payments protocol"),
   (domain: "E-commerce",   protocol: "ONDC",                       proto-sub: "Open Network for Digital Commerce",     status: "partial", india: "Live since 2022",          india-sub: "Same logic as UPI, applied to retail"),
   (domain: "Identity",     protocol: "W3C DID / Verifiable Creds", proto-sub: "Decentralised identifiers standard",    status: "partial", india: "DigiLocker partial",       india-sub: "Portable credential standard needed"),
+  (domain: "Mobility",     protocol: "Beckn Protocol",             proto-sub: "Open discovery & transaction engine",   status: "win",     india: "Namma Yatri / ONDC",      india-sub: "Beating Uber/Ola via open standards"),
+  (domain: "Credit",       protocol: "OCEN",                       proto-sub: "Open Credit Enablement Network",        status: "partial", india: "Live for MSMEs",          india-sub: "Breaking the lending gatekeepers"),
+  (domain: "Healthcare",   protocol: "HL7 FHIR",                   proto-sub: "Fast Healthcare Interoperability Resources", status: "partial", india: "ABDM / UHI",            india-sub: "Portable health records & services"),
+  (domain: "Information",  protocol: "HTTP / HTML (Open Web)",     proto-sub: "The original level playing field",      status: "win",     india: "Losing to silos",         india-sub: "94% time in apps, 6% in browser"),
   (domain: "Email",        protocol: "SMTP / IMAP",                proto-sub: "The original open protocol",           status: "win",     india: "The baseline example",    india-sub: "Gmail ↔ Outlook works. WhatsApp ↔ Signal doesn't — yet."),
 )
 
@@ -337,6 +341,8 @@
 #bullet(dot-color: amber, [*Remote work changed the calculus for Indian developers*], sub: [A senior engineer at a European open-source firm can earn €80–100k from Lucknow or Pune — family intact, no migration.])
 #bullet(dot-color: amber, [*The Brand Gap:* a real cultural obstacle], sub: [Working at 'Infosys' carries marriage market prestige. Working at 'LocalSovereignApp.in' does not — yet. This social cost is real and underacknowledged in tech policy.])
 #bullet(dot-color: amber, [*Open source as the equaliser*], sub: [Skills learned contributing to Matrix, Linux, or Kubernetes at a foreign firm are portable. A developer who returns can build sovereign infrastructure using exactly those skills.])
+#bullet(dot-color: amber, [*The Startup Multiplier: Permissionless Innovation*], sub: [A 3-person team in Kanpur shouldn't need an API key from California to reach Indian users. Open standards level the playing field.])
+#bullet(dot-color: amber, [*Bridging the Digital Divide: Offline-First FOSS*], sub: [Endless OS & OLPC model. Pre-loading knowledge (Wikipedia/Kiwix) on refurbished hardware for rural education.])
 
 #pagebreak()
 
@@ -348,9 +354,10 @@
 #divider()
 
 #bullet(dot-color: blue, [*Constitute the Data Protection Board — now*], sub: [The DPDP Act exists. Enforcement without an operational board is theatre.])
-#bullet(dot-color: blue, [*Add an interoperability mandate to the DPDP Act*], sub: [DMA-style clause for messaging and social media. India has 600M+ smartphone users — that leverage is real.])
-#bullet(dot-color: blue, [*Government-first: run sovereign infrastructure for public services*], sub: [Require that government communications use auditable, domestic or open infrastructure. France deployed Matrix for exactly this.])
-#bullet(dot-color: blue, [*Extend India Stack logic into communications*], sub: [UPI proved open protocols beat proprietary ones in payments. Fund a Messaging Public Infrastructure layer built on Matrix or XMPP.])
+#bullet(dot-color: blue, [*Mandate Matrix & ActivityPub for large platforms*], sub: [Require interoperability for any SSMI with 10M+ Indian users. Break the network effect lock-in.])
+#bullet(dot-color: blue, [*Sovereign Govt Infrastructure: Tchap/BundesMessenger model*], sub: [Move all public service communications to an auditable, domestic Matrix-based stack.])
+#bullet(dot-color: blue, [*Upgrade DigiLocker to W3C Verifiable Credentials*], sub: [Move from "fetching PDFs" to cryptographically portable, privacy-preserving identity tokens.])
+#bullet(dot-color: blue, [*Sovereign Education: Mandate FOSS in curricula*], sub: [Stop training customers for foreign firms. Kerala's KITE model saved ₹3,000 Cr via open standards.])
 
 #pagebreak()
 
@@ -396,3 +403,51 @@
     #text(size: 12pt, fill: muted)[Questions welcome]
   ]
 ]
+
+#pagebreak()
+
+// ── SLIDE 14 · Key References ────────────────────────────────────────
+#tag[Bibliography]
+#v(0.5em)
+#slide-title[Key references & sources]
+#subtitle[Selected legal and technical foundations.]
+#divider()
+
+#set text(size: 10pt)
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 2em,
+  [
+    *Legal Foundations* \
+    #v(0.4em)
+    - *Electric Telegraph Company Act 1850* (13 & 14 Vict. c. lxxxvi).
+    - *Digital Markets Act (DMA)*, Regulation (EU) 2022/1925.
+    - *GDPR*, Regulation (EU) 2016/679.
+    - *India DPDP Act*, Act No. 40 of 2023.
+    - *RBI Directive* on Payment Data Storage (2018).
+    
+    #v(1em)
+    *Technical Standards* \
+    #v(0.4em)
+    - *Matrix protocol* (matrix.org) - IETF/W3C candidate.
+    - *ActivityPub* (W3C Social Web Working Group).
+    - *SMTP* (RFC 821/5321).
+    - *UPI API Specifications* (NPCI).
+  ],
+  [
+    *Reports & Incidents* \
+    #v(0.4em)
+    - *German MoD*, Taurus Leak Investigation (March 2024).
+    - *US DoD IG*, Signalgate Report (December 2025).
+    - *NPCI*, UPI Monthly Statistics (August 2025).
+    - *Meta Newsroom*, Threads ActivityPub Interop (2024).
+    
+    #v(1em)
+    *Sovereign Deployments* \
+    #v(0.4em)
+    - *Tchap* (French Government).
+    - *BundesMessenger* (German Public Administration).
+    - *BwMessenger* (German Armed Forces).
+    - *TI-Messenger* (German Healthcare).
+  ]
+)
