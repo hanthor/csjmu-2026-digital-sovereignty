@@ -8,14 +8,20 @@ James Reilly · International Conference on Cybersecurity Law & Governance · Ap
 
 | File | Description |
 |------|-------------|
-| [slides-4-3.pdf](./slides-4-3.pdf) | Slides — 4:3 |
-| [slides-16-9.pdf](./slides-16-9.pdf) | Slides — 16:9 |
+| [slides-4-3.pdf](./slides-4-3.pdf) | Slides — 4:3 light |
+| [slides-16-9.pdf](./slides-16-9.pdf) | Slides — 16:9 light |
+| [slides-dark-4-3.pdf](./slides-dark-4-3.pdf) | Slides — 4:3 dark |
+| [slides-dark-16-9.pdf](./slides-dark-16-9.pdf) | Slides — 16:9 dark |
 | [script.pdf](./script.pdf) | Speaker script |
 
 ## Source
 
 | File | Description |
 |------|-------------|
-| `slides.typ` | Slides source (4:3) |
-| `slides-16-9.typ` | Slides source (16:9) |
-| `script.typ` | Speaker script source |
+| `slides-content.typ` | All slide content (edit this) |
+| `themes.typ` | Light and dark colour themes |
+| `slides.typ` | Wrapper — 4:3 light |
+| `slides-16-9.typ` | Wrapper — 16:9 light |
+| `slides-dark.typ` | Wrapper — 4:3 dark |
+| `slides-dark-16-9.typ` | Wrapper — 16:9 dark |
+| `script.typ` | Speaker script |

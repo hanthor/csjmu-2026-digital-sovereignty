@@ -11,6 +11,8 @@ default:
 build: _ensure-deps
     typst compile slides.typ slides-4-3.pdf
     typst compile slides-16-9.typ slides-16-9.pdf
+    typst compile slides-dark.typ slides-dark-4-3.pdf
+    typst compile slides-dark-16-9.typ slides-dark-16-9.pdf
     typst compile script.typ script.pdf
 
 # Compile a specific file (e.g. just compile slides.typ)
@@ -29,6 +31,10 @@ lint: _ensure-deps
     @typst compile slides.typ /tmp/lint-slides-4-3.pdf
     @echo "Checking slides-16-9.typ..."
     @typst compile slides-16-9.typ /tmp/lint-slides-16-9.pdf
+    @echo "Checking slides-dark.typ..."
+    @typst compile slides-dark.typ /tmp/lint-slides-dark-4-3.pdf
+    @echo "Checking slides-dark-16-9.typ..."
+    @typst compile slides-dark-16-9.typ /tmp/lint-slides-dark-16-9.pdf
     @echo "Checking script.typ..."
     @typst compile script.typ /tmp/lint-script.pdf
     @echo "All OK"
