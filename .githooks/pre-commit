@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Compile staged .typ files to catch errors before commit.
+# Activate with: git config core.hooksPath .githooks
+
+set -e
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '\.typ$' || true)
+
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+if ! command -v typst &> /dev/null; then
+  echo "typst not found — skipping pre-commit lint"
+  exit 0
+fi
+
+FAILED=0
+TMPFILE=$(mktemp /tmp/typst-check-XXXXXX.pdf)
+
+for file in $STAGED; do
+  echo "typst: checking $file..."
+  if ! typst compile "$file" "$TMPFILE" 2>&1; then
+    echo "  FAIL: $file did not compile"
+    FAILED=1
+  fi
+done
+
+rm -f "$TMPFILE"
+exit $FAILED
