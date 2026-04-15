@@ -41,24 +41,8 @@ setup: install-deps install-hooks
 
 # Install typst and fonts
 install-deps:
-    #!/usr/bin/env bash
-    set -euo pipefail
     brew install typst
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        brew install --cask font-noto-sans font-linux-libertine
-    else
-        # Brew font casks are macOS-only — download directly on Linux
-        FONT_DIR="$HOME/.local/share/fonts"
-        mkdir -p "$FONT_DIR"
-        echo "Downloading Noto Sans..."
-        curl -fsSL "https://fonts.google.com/download?family=Noto+Sans" -o /tmp/noto-sans.zip
-        unzip -oq /tmp/noto-sans.zip "*.ttf" -d "$FONT_DIR" && rm /tmp/noto-sans.zip
-        echo "Downloading Linux Libertine..."
-        curl -fsSL "https://github.com/libertinefonts/linux-libertine/releases/download/6.0.3/LinLibertine_DLx.zip" -o /tmp/libertine.zip
-        unzip -oq /tmp/libertine.zip "*.otf" -d "$FONT_DIR" && rm /tmp/libertine.zip
-        fc-cache -f "$FONT_DIR"
-        echo "Fonts installed to $FONT_DIR"
-    fi
+    brew install --cask font-noto-sans font-linux-libertine
 
 # Activate git pre-commit hook for this repo
 install-hooks:
