@@ -5,7 +5,7 @@
   paper: "a4",
   margin: (x: 2.5cm, y: 2.5cm),
   header: align(right, text(size: 9pt, fill: gray)[James Reilly · Speaker Script · CSJMU 2026]),
-  footer: align(center, counter(page).display()),
+  footer: align(center, context counter(page).display()),
 )
 
 #set text(font: "Linux Libertine", size: 11pt, fill: rgb("#1a1a1a"))
