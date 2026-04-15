@@ -42,7 +42,7 @@ setup: install-deps install-hooks
 # Install typst and fonts
 install-deps:
     brew install typst
-    brew install --cask font-noto-sans font-linux-libertine
+    brew install --cask font-linux-libertine
 
 # Activate git pre-commit hook for this repo
 install-hooks:

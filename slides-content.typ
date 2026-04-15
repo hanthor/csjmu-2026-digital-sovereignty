@@ -1,7 +1,7 @@
 // ── Shared slide content — included by slides.typ and slides-16-9.typ ──
 // Edit only this file. The wrappers just set the page size.
 
-#set text(font: "Noto Sans", size: 21pt, fill: rgb("#1a1a1a"))
+#set text(font: "Linux Libertine", size: 21pt, fill: rgb("#1a1a1a"))
 #set par(leading: 0.75em)
 
 // ── Colour palette ───────────────────────────────────────────────────
