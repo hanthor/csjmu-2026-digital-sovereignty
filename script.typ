@@ -258,7 +258,7 @@ Thank you.
 [9] *Reserve Bank of India (RBI)*, "Directive on Storage of Payment System Data," April 2018 (Circular DPSS.CO.OD No. 2785/06.08.005/2017-18). \
 [10] *National Payments Corporation of India (NPCI)*, "UPI Product Statistics — August 2025." Reported 20.01 billion transactions with a total value of ₹24.85 lakh crore. \
 [11] *ONDC*, "ONDC Strategy Paper: Democratising Digital Commerce in India," 2022. \
-[12] *DINUM (France)*, "Tchap: la messagerie instantanée des agents de l'État." ~600,000 users as of 2026. See also: **BWI GmbH (Germany)**, "BundesMessenger: Der souveräne Messenger für die Verwaltung." \
+[12] *DINUM (France)*, "Tchap: la messagerie instantanée des agents de l'État." ~600,000 users as of 2026. See also: *BWI GmbH (Germany)*, "BundesMessenger: Der souveräne Messenger für die Verwaltung." \
 [13] *Meta Newsroom*, "Threads: Building an Open, Interoperable Social Network with ActivityPub," March 2024. \
 [14] *The Matrix.org Foundation*, "Interoperability without sacrificing security: The case for protocol-level bridging," 2024. \
 [15] *Digital Personal Data Protection Act, 2023* (Act No. 40 of 2023). \
@@ -270,7 +270,7 @@ Thank you.
 [21] *National Health Authority (NHA)*, "ABDM Health Data Management Policy," 2022. See also: "UHI: Unified Health Interface Strategy Paper," 2023. \
 [22] *HL7 International*, "HL7 FHIR Release 5 Specification," 2023. \
 [23] *KITE (Kerala)*, "FOSS Implementation in Schools: A Case Study of Digital Sovereignty in Education," 2024. See also: UNICEF India, "Empowering Adolescents with Future-Ready Skills through Little KITEs," 2024. \
-[24] *Endless OS Foundation*, "The Global Digital Divide: Why Offline-First Operating Systems are Essential for Education," 2023. See also: **Sugar Labs**, "Sugar: A Learning Platform for Collaboration and Discovery." \
+[24] *Endless OS Foundation*, "The Global Digital Divide: Why Offline-First Operating Systems are Essential for Education," 2023. See also: *Sugar Labs*, "Sugar: A Learning Platform for Collaboration and Discovery." \
 [25] *DataReportal*, "Digital 2025: India Overview," February 2025. Statistics on mobile app vs. browser time.
 
 #pagebreak()
