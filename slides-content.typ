@@ -2,437 +2,671 @@
 // Called by wrapper files: slides(theme) from themes.typ
 
 #let slides(t) = {
+  set text(size: 21pt, fill: t.text-fill)
+  set par(leading: 0.75em)
 
-set text(font: "Linux Libertine", size: 21pt, fill: t.text-fill)
-set par(leading: 0.75em)
+  // ── Helpers ────────────────────────────────────────────────────────
+  let tag(content) = text(size: 10pt, fill: t.muted, weight: "bold", upper(content))
 
-// ── Helpers ────────────────────────────────────────────────────────
-let tag(content) = text(size: 10pt, fill: t.muted, weight: "bold",
-  upper(content))
+  let slide-title(content) = block(text(size: 28pt, weight: "bold", fill: t.heading, content))
 
-let slide-title(content) = text(size: 28pt, weight: "bold",
-  fill: t.heading, content)
+  let subtitle(content) = block(above: 0.4em, text(size: 14pt, fill: t.muted, content))
 
-let subtitle(content) = text(size: 15pt, fill: t.muted, content)
+  let divider(col: t.blue) = {
+    v(0.3em)
+    line(length: 2.4cm, stroke: 1.5pt + col)
+    v(0.4em)
+  }
 
-let divider(col: t.blue) = {
-  v(0.3em)
-  line(length: 2.4cm, stroke: 1.5pt + col)
-  v(0.4em)
-}
+  let bullet(dot-color: t.blue, body, sub: none) = {
+    grid(
+      columns: (10pt, 1fr),
+      gutter: 9pt,
+      align(top + left)[
+        #v(5pt)
+        #circle(radius: 3pt, fill: dot-color)
+      ],
+      [
+        #text(size: 15pt)[#body]
+        #if sub != none [
+          #linebreak()
+          #text(size: 13pt, fill: t.muted)[#sub]
+        ]
+      ],
+    )
+    v(0.5em)
+  }
 
-let bullet(dot-color: t.blue, body, sub: none) = {
+  let badge(label, fill-col, text-col) = box(
+    fill: fill-col,
+    inset: (x: 7pt, y: 3pt),
+    radius: 10pt,
+    text(size: 10pt, weight: "bold", fill: text-col, label),
+  )
+
+  let win-badge() = badge("India leads globally", t.lightgrn, t.green)
+  let gap-badge() = badge("Mandate needed", t.lightcor, t.coral)
+  let partial-badge() = badge("Exists, adoption patchy", t.lightamb, t.amber)
+
+  let hline() = line(length: 100%, stroke: 0.5pt + t.border)
+
+  // ── SLIDE 1 · Title ────────────────────────────────────────────────
+  block(
+    width: 100%,
+    height: 100%,
+    fill: t.navy,
+    inset: (x: 2.4cm, y: 2.2cm),
+  )[
+    #text(size: 11pt, fill: t.midblue, weight: "bold")[
+      INTERNATIONAL CONFERENCE ON CYBERSECURITY LAW & GOVERNANCE · APRIL 2026
+    ]
+    #line(length: 2.4cm, stroke: 1.5pt + t.midblue)
+    #v(0.6em)
+    #text(size: 33pt, weight: "bold", fill: white)[
+      Digital Sovereignty:\
+      Lessons from the EU\
+      DMA, GDPR, DPDP, and the Path for India
+    ]
+    #v(1.2em)
+    #text(size: 15pt, fill: t.midblue)[
+      James Reilly · Open Source Advocate & IT Consultant\
+      FOSS United · AlmaLinux · formerly Beeper / Element
+    ]
+  ]
+
+  pagebreak()
+
+  // ── SLIDE 2 · The Utility Question ─────────────────────────────────
+  tag[Opening · 0–3 min]
+  v(0.5em)
+  slide-title[The utility question]
+  subtitle[When did messaging become infrastructure?]
+  divider()
+
   grid(
-    columns: (10pt, 1fr),
-    gutter: 9pt,
-    align(top + left)[
-      #v(5pt)
-      #circle(radius: 3pt, fill: dot-color)
+    columns: (1fr, 1.2fr),
+    gutter: 1.5em,
+    align(center + horizon)[
+      #image("assets/slide2.jpg", height: 80%, fit: "contain")
     ],
-    [
-      #text(size: 15pt)[#body]
-      #if sub != none [
-        #linebreak()
-        #text(size: 13pt, fill: t.muted)[#sub]
-      ]
+    align(horizon)[
+      #bullet(
+        dot-color: t.blue,
+        [1850: UK Telegraph Act],
+        sub: [The first communication utility law. Non-discrimination in sending.],
+      )
+      #bullet(
+        dot-color: t.blue,
+        [2024: EU Digital Markets Act],
+        sub: [WhatsApp forced open. Same utility principle, 174 years later.],
+      )
+      #bullet(
+        dot-color: t.blue,
+        [India's Reality: 1.4B Users],
+        sub: [Financial, social, and political lives run on foreign platforms.],
+      )
     ]
   )
+
+  pagebreak()
+
+  // ── SLIDE 3 · Definition ───────────────────────────────────────────
+  tag[Definition · 3–5 min]
   v(0.5em)
-}
+  slide-title[What sovereignty actually means]
+  subtitle[Not isolation. Strategic autonomy.]
+  divider()
 
-let badge(label, fill-col, text-col) = box(
-  fill: fill-col,
-  inset: (x: 7pt, y: 3pt),
-  radius: 10pt,
-  text(size: 10pt, weight: "bold", fill: text-col, label)
-)
-
-let win-badge()     = badge("India leads globally", t.lightgrn, t.green)
-let gap-badge()     = badge("Mandate needed",       t.lightcor,  t.coral)
-let partial-badge() = badge("Exists, adoption patchy", t.lightamb, t.amber)
-
-let hline() = line(length: 100%, stroke: 0.5pt + t.border)
-
-// ── SLIDE 1 · Title ────────────────────────────────────────────────
-block(
-  width: 100%, height: 100%,
-  fill: t.navy,
-  inset: (x: 2.4cm, y: 2.2cm),
-)[
-  #text(size: 11pt, fill: t.midblue, weight: "bold")[
-    INTERNATIONAL CONFERENCE ON CYBERSECURITY LAW & GOVERNANCE · APRIL 2026
-  ]
-  #line(length: 2.4cm, stroke: 1.5pt + t.midblue)
-  #v(0.6em)
-  #text(size: 33pt, weight: "bold", fill: white)[
-    Digital Sovereignty:\
-    Lessons from the EU\
-    and the Path for India
-  ]
-  #v(1.2em)
-  #text(size: 15pt, fill: t.midblue)[
-    James Reilly · Open Source Advocate & IT Consultant\
-    FOSS United · AlmaLinux · formerly Beeper / Element
-  ]
-]
-
-pagebreak()
-
-// ── SLIDE 2 · The Utility Question ─────────────────────────────────
-tag[Opening · 0–3 min]
-v(0.5em)
-slide-title[The utility question]
-subtitle[When did messaging become infrastructure?]
-divider()
-
-bullet(dot-color: t.blue, [In 1850, a British court ruled that a telegraph company could not discriminate between senders.], sub: [The first infrastructure law for communications.])
-bullet(dot-color: t.blue, [In 2024, the EU's Digital Markets Act forced WhatsApp to open its doors to competing apps.], sub: [The same principle, 174 years later.])
-bullet(dot-color: t.blue, [India's 1.4 billion people conduct their financial, social, and political lives through platforms headquartered in California.], sub: [The sovereignty question isn't theoretical. It's already here.])
-
-pagebreak()
-
-// ── SLIDE 3 · Definition ───────────────────────────────────────────
-tag[Definition · 3–5 min]
-v(0.5em)
-slide-title[What sovereignty actually means]
-subtitle[Not isolation. Strategic autonomy.]
-divider()
-
-grid(
-  columns: (1fr, 1fr),
-  gutter: 1.4em,
-  block(fill: t.lightcor, radius: 6pt, inset: 14pt)[
-    #text(size: 9pt, weight: "bold", fill: t.coral-label)[WHAT IT IS NOT]
-    #v(0.5em)
-    #for item in ("Building a Great Firewall", "Banning foreign platforms", "Technological isolationism", "Nationalist protectionism") {
-      bullet(dot-color: t.coral, item)
-    }
-  ],
-  block(fill: t.lightteal, radius: 6pt, inset: 14pt)[
-    #text(size: 9pt, weight: "bold", fill: t.teal-label)[WHAT IT IS]
-    #v(0.5em)
-    #for item in ("The right to audit infrastructure", "Legal jurisdiction over user data", "Ability to switch providers", "Domestic capacity to build alternatives") {
-      bullet(dot-color: t.teal, item)
-    }
-  ]
-)
-
-pagebreak()
-
-// ── SLIDE 4 · EU Case Study ────────────────────────────────────────
-tag[EU Case Study · 5–10 min]
-v(0.5em)
-slide-title[How Europe built its regulatory shield]
-subtitle[Two instruments. One decade. Global impact.]
-divider()
-
-bullet(dot-color: t.teal, [*GDPR (2018):* Exported European values globally], sub: [Every company serving EU users must comply — regardless of where they're headquartered. India adopted a similar framework with the DPDP Act 2023.])
-bullet(dot-color: t.teal, [*Digital Markets Act (2022):* Targeted 'Gatekeepers'], sub: [Apple, Google, Meta, Amazon, Microsoft, ByteDance — forced to open APIs and enable interoperability. Fines up to 10% of global turnover.])
-bullet(dot-color: t.teal, [*DMA interoperability in practice:* WhatsApp forced open], sub: [In March 2024, WhatsApp was legally required to allow third-party apps to connect. My former employer Element successfully bridged Matrix to WhatsApp with full E2EE.])
-
-pagebreak()
-
-// ── SLIDE 5 · Incidents ────────────────────────────────────────────
-tag[Security Risk · 10–15 min]
-v(0.5em)
-slide-title[Two incidents that changed the conversation]
-subtitle[Even 'secure' foreign platforms carry sovereignty risk.]
-divider()
-
-block(
-  width: 100%,
-  inset: (left: 10pt, right: 12pt, top: 10pt, bottom: 10pt),
-  radius: (right: 6pt),
-  fill: t.incident-fill,
-  stroke: (left: 3pt + t.incident-stroke),
-)[
-  #text(size: 11pt, weight: "bold", fill: t.incident-label)[INCIDENT A · GERMANY 2024]
-  #v(0.25em)
-  #text(size: 15pt, weight: "bold")[The Taurus Leak (Webex)]
-  #v(0.2em)
-  #text(size: 14pt)[Senior German military officers discussed classified weapons strategy on a Webex call. Russian intelligence intercepted it — not by breaking encryption, but because one officer dialled in from an insecure consumer line. The failure wasn't cryptographic. It was operational and infrastructural.]
-]
-
-v(0.6em)
-
-block(
-  width: 100%,
-  inset: (left: 10pt, right: 12pt, top: 10pt, bottom: 10pt),
-  radius: (right: 6pt),
-  fill: t.incident-fill,
-  stroke: (left: 3pt + t.incident-stroke),
-)[
-  #text(size: 11pt, weight: "bold", fill: t.incident-label)[INCIDENT B · USA 2025]
-  #v(0.25em)
-  #text(size: 15pt, weight: "bold")[Signalgate (Hegseth / Signal)]
-  #v(0.2em)
-  #text(size: 14pt)[The US Defence Secretary shared sensitive war plans in a Signal group chat that accidentally included a journalist. Signal is technically excellent — but it's a consumer app with no audit trail, no access controls, and no sovereign oversight.]
-]
-
-pagebreak()
-
-// ── SLIDE 6 · The Stack ────────────────────────────────────────────
-tag[The Core Argument · 15 min]
-v(0.5em)
-slide-title[The sovereignty stack]
-subtitle[Law without infrastructure is a promise you can't keep.]
-divider()
-
-let stack-layers = (
-  (num: "04", name: "Law & Regulation",  note: "DPDP Act, DMA, GDPR — India has this",             fill-col: t.lightblue, text-col: t.layer-law-text),
-  (num: "03", name: "Data localisation", note: "Where data physically lives",                      fill-col: t.lightteal, text-col: t.layer-data-text),
-  (num: "02", name: "Infrastructure",    note: "Who runs the servers, clouds, networks",           fill-col: t.lightamb,  text-col: t.layer-infra-text),
-  (num: "01", name: "Open Protocols",    note: "Matrix, UPI, SMTP, ActivityPub — the foundation",  fill-col: t.lightcor,  text-col: t.layer-proto-text),
-)
-
-for layer in stack-layers {
-  block(
-    width: 100%, inset: (x: 14pt, y: 10pt), radius: 5pt,
-    fill: layer.fill-col,
-  )[
-    #grid(
-      columns: (28pt, 1fr, auto),
-      align: horizon,
-      text(size: 12pt, fill: layer.text-col, weight: "bold")[#layer.num],
-      text(size: 16pt, weight: "bold", fill: layer.text-col)[#layer.name],
-      text(size: 13pt, fill: layer.text-col)[#layer.note],
-    )
-  ]
-  v(0.4em)
-}
-
-text(size: 11pt, fill: t.muted)[← India has Layer 4. UPI proved Layer 1 works in payments. The gap is messaging and social media.]
-
-pagebreak()
-
-// ── SLIDE 7 · India's Wins ─────────────────────────────────────────
-tag[India's Existing Wins · 15–17 min]
-v(0.5em)
-slide-title[India already invented this playbook]
-subtitle[UPI, Aadhaar, ONDC — India's open protocol advantage.]
-divider()
-
-bullet(dot-color: t.green, [*UPI:* the world's most successful open payments protocol], sub: [20.01 billion transactions in a single month (August 2025). Built on open standards — any bank, any app, true interoperability. Now expanding internationally.])
-bullet(dot-color: t.green, [*ONDC:* open e-commerce, not a marketplace], sub: [A set of open standards for commerce — the same logic as UPI, applied to retail. Any seller, any buyer app, no gatekeeper.])
-bullet(dot-color: t.green, [*The EU envies this. Now apply it to communications.* ], sub: [India pioneered open protocols for payments and identity. The gap is messaging and social media — exactly what the DMA is forcing in Europe.])
-
-pagebreak()
-
-// ── SLIDE 8 · Protocol Map ─────────────────────────────────────────
-tag[Open Protocols · 17–22 min]
-v(0.5em)
-slide-title[The protocol map: India's wins and gaps]
-subtitle[Where open standards exist — and where mandate is still needed.]
-v(0.6em)
-
-let proto-rows = (
-  (domain: "Messaging",    protocol: "Matrix / XMPP",              proto-sub: "Federated, E2EE, open standard",             status: "gap",     india: "No sovereign stack",    india-sub: "WhatsApp dominates entirely"),
-  (domain: "Social media", protocol: "ActivityPub / AT Protocol",  proto-sub: "Fediverse, Mastodon, Bluesky, Threads",      status: "gap",     india: "No open alternative",   india-sub: "EU expanding DMA here in 2026"),
-  (domain: "Payments",     protocol: "UPI",                        proto-sub: "Open, interoperable, sovereign",             status: "win",     india: "20.01B txns/month",     india-sub: "World's best open payments protocol"),
-  (domain: "E-commerce",   protocol: "ONDC",                       proto-sub: "Open Network for Digital Commerce",          status: "partial", india: "Live since 2022",        india-sub: "Same logic as UPI, applied to retail"),
-  (domain: "Identity",     protocol: "W3C DID / Verifiable Creds", proto-sub: "Decentralised identifiers standard",         status: "partial", india: "DigiLocker partial",     india-sub: "Portable credential standard needed"),
-  (domain: "Mobility",     protocol: "Beckn Protocol",             proto-sub: "Open discovery & transaction engine",        status: "win",     india: "Namma Yatri / ONDC",    india-sub: "Beating Uber/Ola via open standards"),
-  (domain: "Credit",       protocol: "OCEN",                       proto-sub: "Open Credit Enablement Network",             status: "partial", india: "Live for MSMEs",         india-sub: "Breaking the lending gatekeepers"),
-  (domain: "Healthcare",   protocol: "HL7 FHIR",                   proto-sub: "Fast Healthcare Interoperability Resources", status: "partial", india: "ABDM / UHI",             india-sub: "Portable health records & services"),
-  (domain: "Information",  protocol: "HTTP / HTML (Open Web)",     proto-sub: "The original level playing field",           status: "win",     india: "Losing to silos",        india-sub: "94% time in apps, 6% in browser"),
-  (domain: "Email",        protocol: "SMTP / IMAP",                proto-sub: "The original open protocol",                status: "win",     india: "The baseline example",  india-sub: "Gmail ↔ Outlook works. WhatsApp ↔ Signal doesn't — yet."),
-)
-
-// Header
-block(width: 100%, inset: (x: 8pt, y: 6pt), fill: t.subtle, radius: (top: 5pt))[
-  #grid(
-    columns: (18%, 26%, 22%, 34%),
-    gutter: 8pt,
-    ..("Domain", "Open protocol", "Status", "India position").map(h =>
-      text(size: 10pt, weight: "bold", fill: t.muted, upper(h))
-    )
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1.4em,
+    block(fill: t.lightcor, radius: 6pt, inset: 14pt)[
+      #text(size: 9pt, weight: "bold", fill: t.coral-label)[WHAT IT IS NOT]
+      #v(0.5em)
+      #for item in (
+        "Building a Great Firewall",
+        "Banning foreign platforms",
+        "Technological isolationism",
+        "Nationalist protectionism",
+      ) {
+        bullet(dot-color: t.coral, item)
+      }
+    ],
+    block(fill: t.lightteal, radius: 6pt, inset: 14pt)[
+      #text(size: 9pt, weight: "bold", fill: t.teal-label)[WHAT IT IS]
+      #v(0.5em)
+      #for item in (
+        "The right to audit infrastructure",
+        "Legal jurisdiction over user data",
+        "Ability to switch providers",
+        "Domestic capacity to build alternatives",
+      ) {
+        bullet(dot-color: t.teal, item)
+      }
+    ],
   )
-]
 
-for row in proto-rows {
-  let badge-el = if row.status == "win" { win-badge() }
-    else if row.status == "gap" { gap-badge() }
-    else { partial-badge() }
+  pagebreak()
 
-  block(width: 100%, inset: (x: 8pt, y: 7pt), stroke: (bottom: 0.5pt + t.border))[
+  // ── SLIDE 4 · EU Case Study ────────────────────────────────────────
+  tag[EU Case Study · 5–10 min]
+  v(0.5em)
+  slide-title[How Europe built its regulatory shield]
+  subtitle[Two instruments. One decade. Global impact.]
+  divider()
+
+  bullet(
+    dot-color: t.teal,
+    [*GDPR (2018):* Exported European values globally],
+    sub: [Every company serving EU users must comply — regardless of where they're headquartered. India adopted a similar framework with the DPDP Act 2023.],
+  )
+  bullet(
+    dot-color: t.teal,
+    [*Digital Markets Act (2022):* Targeted 'Gatekeepers'],
+    sub: [Apple, Google, Meta, Amazon, Microsoft, ByteDance — forced to open APIs and enable interoperability. Fines up to 10% of global turnover.],
+  )
+  bullet(
+    dot-color: t.teal,
+    [*DMA interoperability in practice:* WhatsApp forced open],
+    sub: [In March 2024, WhatsApp was legally required to allow third-party apps to connect. My former employer Element successfully bridged Matrix to WhatsApp with full E2EE.],
+  )
+
+  pagebreak()
+
+  // ── SLIDE 5a · Incident A ──────────────────────────────────────────
+  tag[Security Risk · 10–12 min]
+  v(0.5em)
+  slide-title[Two incidents that changed the conversation]
+  subtitle[1. The Taurus Leak (Germany)]
+  divider()
+
+  grid(
+    columns: (1fr, 1.2fr),
+    gutter: 2em,
+    align(horizon)[
+      #block(
+        width: 100%,
+        inset: (left: 10pt, right: 12pt, top: 10pt, bottom: 10pt),
+        radius: (right: 6pt),
+        fill: t.incident-fill,
+        stroke: (left: 3pt + t.incident-stroke),
+      )[
+        #text(size: 11pt, weight: "bold", fill: t.incident-label)[INCIDENT A · GERMANY 2024]
+        #v(0.25em)
+        #text(size: 15pt, weight: "bold")[The Taurus Leak (Webex)]
+        #v(0.2em)
+        #text(size: 13pt)[Military officers intercepted on an insecure consumer line. Operational failure, not cryptographic.]
+      ]
+    ],
+    align(center + horizon)[
+      #image("assets/taurus.jpg", width: 100%)
+    ]
+  )
+
+  pagebreak()
+
+  // ── SLIDE 5b · Incident B ──────────────────────────────────────────
+  tag[Security Risk · 12–15 min]
+  v(0.5em)
+  slide-title[Two incidents that changed the conversation]
+  subtitle[2. Signalgate (USA)]
+  divider()
+
+  grid(
+    columns: (1fr, 1.2fr),
+    gutter: 2em,
+    align(horizon)[
+      #block(
+        width: 100%,
+        inset: (left: 10pt, right: 12pt, top: 10pt, bottom: 10pt),
+        radius: (right: 6pt),
+        fill: t.incident-fill,
+        stroke: (left: 3pt + t.incident-stroke),
+      )[
+        #text(size: 11pt, weight: "bold", fill: t.incident-label)[INCIDENT B · USA 2025]
+        #v(0.25em)
+        #text(size: 15pt, weight: "bold")[Signalgate (Hegseth / Signal)]
+        #v(0.2em)
+        #text(size: 13pt)[Sensitive plans shared via consumer app with a journalist. No audit trail, no access controls.]
+      ]
+    ],
+    align(center + horizon)[
+      #image("assets/US_Govt_Signal_leak_screenshot_3.png", width: 100%)
+    ]
+  )
+
+  pagebreak()
+
+  // ── SLIDE 6 · The Stack ────────────────────────────────────────────
+  tag[The Core Argument · 15 min]
+  v(0.5em)
+  slide-title[The sovereignty stack]
+  subtitle[Law without infrastructure is a promise you can't keep.]
+  divider()
+
+  let stack-layers = (
+    (
+      num: "04",
+      name: "Law & Regulation",
+      note: "DPDP Act, DMA, GDPR — India has this",
+      fill-col: t.lightblue,
+      text-col: t.layer-law-text,
+    ),
+    (
+      num: "03",
+      name: "Data localisation",
+      note: "Where data physically lives",
+      fill-col: t.lightteal,
+      text-col: t.layer-data-text,
+    ),
+    (
+      num: "02",
+      name: "Infrastructure",
+      note: "Who runs the servers, clouds, networks",
+      fill-col: t.lightamb,
+      text-col: t.layer-infra-text,
+    ),
+    (
+      num: "01",
+      name: "Open Protocols",
+      note: "Matrix, UPI, SMTP, ActivityPub — the foundation",
+      fill-col: t.lightcor,
+      text-col: t.layer-proto-text,
+    ),
+  )
+
+  for layer in stack-layers {
+    block(
+      width: 100%,
+      inset: (x: 14pt, y: 7pt),
+      radius: 5pt,
+      fill: layer.fill-col,
+    )[
+      #grid(
+        columns: (28pt, 1fr, auto),
+        align: horizon,
+        text(size: 12pt, fill: layer.text-col, weight: "bold")[#layer.num],
+        text(size: 16pt, weight: "bold", fill: layer.text-col)[#layer.name],
+        text(size: 13pt, fill: layer.text-col)[#layer.note],
+      )
+    ]
+    v(0.2em)
+  }
+
+  text(
+    size: 11pt,
+    fill: t.muted,
+  )[← India has Layer 4. UPI proved Layer 1 works in payments. The gap is messaging and social media.]
+
+  pagebreak()
+
+  // ── SLIDE 7 · India's Wins ─────────────────────────────────────────
+  tag[India's Existing Wins · 15–17 min]
+  v(0.5em)
+  slide-title[India already invented this playbook]
+  subtitle[UPI, Aadhaar, ONDC — India's open protocol advantage.]
+  divider()
+
+  bullet(
+    dot-color: t.green,
+    [*UPI:* the world's most successful open payments protocol],
+    sub: [20.01 billion transactions in a single month (August 2025). Built on open standards — any bank, any app, true interoperability. Now expanding internationally.],
+  )
+  bullet(
+    dot-color: t.green,
+    [*ONDC:* open e-commerce, not a marketplace],
+    sub: [A set of open standards for commerce — the same logic as UPI, applied to retail. Any seller, any buyer app, no gatekeeper.],
+  )
+  bullet(
+    dot-color: t.green,
+    [*The EU envies this. Now apply it to communications.* ],
+    sub: [India pioneered open protocols for payments and identity. The gap is messaging and social media — exactly what the DMA is forcing in Europe.],
+  )
+
+  pagebreak()
+
+  // ── SLIDE 8 · Protocol Map ─────────────────────────────────────────
+  tag[Open Protocols · 17–22 min]
+  v(0.5em)
+  slide-title[The protocol map: India's wins and gaps]
+  subtitle[Where open standards exist — and where mandate is still needed.]
+  v(0.6em)
+
+  let proto-rows = (
+    (
+      domain: "Messaging",
+      protocol: "Matrix / XMPP",
+      proto-sub: "Federated, E2EE, open standard",
+      status: "gap",
+      india: "No sovereign stack",
+      india-sub: "WhatsApp dominates entirely",
+    ),
+    (
+      domain: "Social media",
+      protocol: "ActivityPub / AT Protocol",
+      proto-sub: "Fediverse, Mastodon, Bluesky, Threads",
+      status: "gap",
+      india: "No open alternative",
+      india-sub: "EU expanding DMA here in 2026",
+    ),
+    (
+      domain: "Payments",
+      protocol: "UPI",
+      proto-sub: "Open, interoperable, sovereign",
+      status: "win",
+      india: "20.01B txns/month",
+      india-sub: "World's best open payments protocol",
+    ),
+    (
+      domain: "E-commerce",
+      protocol: "ONDC",
+      proto-sub: "Open Network for Digital Commerce",
+      status: "partial",
+      india: "Live since 2022",
+      india-sub: "Same logic as UPI, applied to retail",
+    ),
+    (
+      domain: "Identity",
+      protocol: "W3C DID / Verifiable Creds",
+      proto-sub: "Decentralised identifiers standard",
+      status: "partial",
+      india: "DigiLocker partial",
+      india-sub: "Portable credential standard needed",
+    ),
+    (
+      domain: "Mobility",
+      protocol: "Beckn Protocol",
+      proto-sub: "Open discovery & transaction engine",
+      status: "win",
+      india: "Namma Yatri / ONDC",
+      india-sub: "Beating Uber/Ola via open standards",
+    ),
+    (
+      domain: "Credit",
+      protocol: "OCEN",
+      proto-sub: "Open Credit Enablement Network",
+      status: "partial",
+      india: "Live for MSMEs",
+      india-sub: "Breaking the lending gatekeepers",
+    ),
+    (
+      domain: "Healthcare",
+      protocol: "HL7 FHIR",
+      proto-sub: "Fast Healthcare Interoperability Resources",
+      status: "partial",
+      india: "ABDM / UHI",
+      india-sub: "Portable health records & services",
+    ),
+    (
+      domain: "Information",
+      protocol: "HTTP / HTML (Open Web)",
+      proto-sub: "The original level playing field",
+      status: "win",
+      india: "Losing to silos",
+      india-sub: "94% time in apps, 6% in browser",
+    ),
+    (
+      domain: "Email",
+      protocol: "SMTP / IMAP",
+      proto-sub: "The original open protocol",
+      status: "win",
+      india: "The baseline example",
+      india-sub: "Gmail ↔ Outlook works. WhatsApp ↔ Signal doesn't — yet.",
+    ),
+  )
+
+  // Header
+  block(width: 100%, inset: (x: 8pt, y: 6pt), fill: t.subtle, radius: (top: 5pt))[
     #grid(
       columns: (18%, 26%, 22%, 34%),
       gutter: 8pt,
-      align: top,
-      text(size: 14pt, weight: "bold")[#row.domain],
-      [
-        #text(size: 14pt, weight: "bold")[#row.protocol]
-        #linebreak()
-        #text(size: 12pt, fill: t.muted)[#row.proto-sub]
-      ],
-      badge-el,
-      [
-        #text(size: 14pt, weight: "bold")[#row.india]
-        #linebreak()
-        #text(size: 12pt, fill: t.muted)[#row.india-sub]
-      ],
+      ..("Domain", "Open protocol", "Status", "India position").map(h => text(
+        size: 10pt,
+        weight: "bold",
+        fill: t.muted,
+        upper(h),
+      ))
     )
   ]
-}
 
-v(0.5em)
-block(fill: t.summary-bg, radius: 5pt, inset: (x: 12pt, y: 9pt), width: 100%)[
-  #text(size: 13pt, fill: t.summary-text)[India proved open protocols beat proprietary gatekeepers in payments. The same playbook — mandate interoperability, fund open infrastructure — applies directly to messaging and social media.]
-]
-
-pagebreak()
-
-// ── SLIDE 9 · DPDP vs GDPR ────────────────────────────────────────
-tag[India's Opportunity · 22–24 min]
-v(0.5em)
-slide-title[India's DPDP Act vs GDPR]
-subtitle[Strong law — but enforcement infrastructure is missing.]
-divider()
-
-grid(
-  columns: (1fr, 1fr),
-  gutter: 1.4em,
-  block(fill: t.lightcor, radius: 6pt, inset: 14pt)[
-    #text(size: 9pt, weight: "bold", fill: t.coral-label)[GDPR (EU, 2018)]
-    #v(0.5em)
-    #for item in ("Right to access, erasure, portability", "Data Protection Officer mandatory", "Fines up to 4% global revenue", "Extraterritorial reach", "Independent supervisory authorities") {
-      bullet(dot-color: t.coral, item)
+  for row in proto-rows {
+    let badge-el = if row.status == "win" { win-badge() } else if row.status == "gap" { gap-badge() } else {
+      partial-badge()
     }
-  ],
-  block(fill: t.lightteal, radius: 6pt, inset: 14pt)[
-    #text(size: 9pt, weight: "bold", fill: t.teal-label)[DPDP ACT (INDIA, 2023)]
-    #v(0.5em)
-    #for item in ("Consent-based framework, similar rights", "Data Protection Board (not yet operational)", "Fines up to ₹250 crore", "Applies to Indian data globally", "Government exemptions remain broad") {
-      bullet(dot-color: t.teal, item)
-    }
-  ]
-)
 
-pagebreak()
-
-// ── SLIDE 10 · Human Capital ──────────────────────────────────────
-tag[India's Opportunity · 24–26 min]
-v(0.5em)
-slide-title[The human capital advantage]
-subtitle[India has the talent. The obstacle is cultural, not technical.]
-divider()
-
-bullet(dot-color: t.amber, [*Remote work changed the calculus for Indian developers*], sub: [A senior engineer at a European open-source firm can earn €80–100k from Lucknow or Pune — family intact, no migration.])
-bullet(dot-color: t.amber, [*The Brand Gap:* a real cultural obstacle], sub: [Working at 'Infosys' carries marriage market prestige. Working at 'LocalSovereignApp.in' does not — yet. This social cost is real and underacknowledged in tech policy.])
-bullet(dot-color: t.amber, [*Open source as the equaliser*], sub: [Skills learned contributing to Matrix, Linux, or Kubernetes at a foreign firm are portable. A developer who returns can build sovereign infrastructure using exactly those skills.])
-bullet(dot-color: t.amber, [*The Startup Multiplier: Permissionless Innovation*], sub: [A 3-person team in Kanpur shouldn't need an API key from California to reach Indian users. Open standards level the playing field.])
-bullet(dot-color: t.amber, [*Bridging the Digital Divide: Offline-First FOSS*], sub: [Endless OS & OLPC model. Pre-loading knowledge (Wikipedia/Kiwix) on refurbished hardware for rural education.])
-
-pagebreak()
-
-// ── SLIDE 11 · Concrete Steps ─────────────────────────────────────
-tag[What India Should Do · 26–28 min]
-v(0.5em)
-slide-title[Concrete steps, not aspirations]
-subtitle[Each one has a working precedent.]
-divider()
-
-bullet(dot-color: t.blue, [*Constitute the Data Protection Board — now*], sub: [The DPDP Act exists. Enforcement without an operational board is theatre.])
-bullet(dot-color: t.blue, [*Mandate Matrix & ActivityPub for large platforms*], sub: [Require interoperability for any SSMI with 10M+ Indian users. Break the network effect lock-in.])
-bullet(dot-color: t.blue, [*Sovereign Govt Infrastructure: Tchap/BundesMessenger model*], sub: [Move all public service communications to an auditable, domestic Matrix-based stack.])
-bullet(dot-color: t.blue, [*Upgrade DigiLocker to W3C Verifiable Credentials*], sub: [Move from "fetching PDFs" to cryptographically portable, privacy-preserving identity tokens.])
-bullet(dot-color: t.blue, [*Sovereign Education: Mandate FOSS in curricula*], sub: [Stop training customers for foreign firms. Kerala's KITE model saved ₹3,000 Cr via open standards.])
-
-pagebreak()
-
-// ── SLIDE 12 · Conclusion ─────────────────────────────────────────
-tag[Conclusion · 28–30 min]
-v(0.5em)
-slide-title[Beyond preaching]
-subtitle[Sovereignty is built, not declared.]
-divider()
-v(1em)
-
-block(
-  width: 100%,
-  inset: (left: 14pt, right: 16pt, top: 14pt, bottom: 14pt),
-  stroke: (left: 3pt + t.blue),
-)[
-  #text(size: 21pt, style: "italic", fill: t.heading)[
-    "India doesn't need to ask permission to participate in the global digital economy on its own terms. It has already proven it can build the foundations — with UPI, with Aadhaar, with ONDC. The question is whether it finishes the job."
-  ]
-]
-
-pagebreak()
-
-// ── SLIDE 13 · Thank You ──────────────────────────────────────────
-block(
-  width: 100%, height: 100%,
-  fill: t.page-fill,
-  inset: (x: 2.4cm, y: 2.4cm),
-)[
-  #v(2em)
-  #align(center)[
-    #text(size: 11pt, weight: "bold", fill: t.muted)[THANK YOU]
-    #v(0.6em)
-    #text(size: 35pt, weight: "bold")[James Reilly]
-    #line(length: 2.4cm, stroke: 1.5pt + t.blue)
-    #v(0.4em)
-    #text(size: 15pt, fill: t.midblue)[
-      #link("https://reilly.asia")[reilly.asia] · #link("https://linkedin.com/in/jreilly112")[linkedin.com/in/jreilly112]
+    block(width: 100%, inset: (x: 8pt, y: 7pt), stroke: (bottom: 0.5pt + t.border))[
+      #grid(
+        columns: (18%, 26%, 22%, 34%),
+        gutter: 8pt,
+        align: top,
+        text(size: 14pt, weight: "bold")[#row.domain],
+        [
+          #text(size: 14pt, weight: "bold")[#row.protocol]
+          #linebreak()
+          #text(size: 12pt, fill: t.muted)[#row.proto-sub]
+        ],
+        badge-el,
+        [
+          #text(size: 14pt, weight: "bold")[#row.india]
+          #linebreak()
+          #text(size: 12pt, fill: t.muted)[#row.india-sub]
+        ],
+      )
     ]
-    #v(0.4em)
-    #text(size: 13pt, fill: t.muted)[
-      Open Source Advocate & IT Consultant\
-      FOSS United · AlmaLinux\
-      formerly Beeper (now Automattic) · Element
+  }
+
+  v(0.5em)
+  block(fill: t.summary-bg, radius: 5pt, inset: (x: 12pt, y: 9pt), width: 100%)[
+    #text(
+      size: 13pt,
+      fill: t.summary-text,
+    )[India proved open protocols beat proprietary gatekeepers in payments. The same playbook — mandate interoperability, fund open infrastructure — applies directly to messaging and social media.]
+  ]
+
+  pagebreak()
+
+  // ── SLIDE 9 · DPDP vs GDPR ────────────────────────────────────────
+  tag[India's Opportunity · 22–24 min]
+  v(0.5em)
+  slide-title[India's DPDP Act vs GDPR]
+  subtitle[Strong law — but enforcement infrastructure is missing.]
+  divider()
+
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1.4em,
+    block(fill: t.lightcor, radius: 6pt, inset: 14pt)[
+      #text(size: 9pt, weight: "bold", fill: t.coral-label)[GDPR (EU, 2018)]
+      #v(0.5em)
+      #for item in (
+        "Right to access, erasure, portability",
+        "Data Protection Officer mandatory",
+        "Fines up to 4% global revenue",
+        "Extraterritorial reach",
+        "Independent supervisory authorities",
+      ) {
+        bullet(dot-color: t.coral, item)
+      }
+    ],
+    block(fill: t.lightteal, radius: 6pt, inset: 14pt)[
+      #text(size: 9pt, weight: "bold", fill: t.teal-label)[DPDP ACT (INDIA, 2023)]
+      #v(0.5em)
+      #for item in (
+        "Consent-based framework, similar rights",
+        "Data Protection Board (not yet operational)",
+        "Fines up to ₹250 crore",
+        "Applies to Indian data globally",
+        "Government exemptions remain broad",
+      ) {
+        bullet(dot-color: t.teal, item)
+      }
+    ],
+  )
+
+  pagebreak()
+
+  // ── SLIDE 10 · Human Capital ──────────────────────────────────────
+  tag[India's Opportunity · 24–26 min]
+  v(0.5em)
+  slide-title[The human capital advantage]
+  subtitle[India has the talent. The obstacle is cultural, not technical.]
+  divider()
+
+  grid(
+    columns: (1fr, 1.2fr),
+    gutter: 1.5em,
+    align(center)[
+      #image("assets/slide10.jpg", height: 70%, fit: "cover", width: 100%)
+    ],
+    align(horizon)[
+      #bullet(
+        dot-color: t.amber,
+        [*Remote work shifted the balance*],
+        sub: [Indian developers can now earn global wages from local cities.],
+      )
+      #bullet(
+        dot-color: t.amber,
+        [*The Brand Gap*],
+        sub: [Social prestige still lies with foreign tech giants, posing a cultural obstacle.],
+      )
+      #bullet(
+        dot-color: t.amber,
+        [*Open source as equaliser*],
+        sub: [Portable skills built via FOSS (Matrix, Linux) apply directly to sovereign infrastructure solving local problems.],
+      )
     ]
+  )
+
+  pagebreak()
+
+  // ── SLIDE 11 · Concrete Steps ─────────────────────────────────────
+  tag[What India Should Do · 26–28 min]
+  v(0.5em)
+  slide-title[Concrete steps, not aspirations]
+  subtitle[Each one has a working precedent.]
+  divider()
+
+  bullet(
+    dot-color: t.blue,
+    [*Constitute the Data Protection Board — now*],
+    sub: [The DPDP Act exists. Enforcement without an operational board is theatre.],
+  )
+  bullet(
+    dot-color: t.blue,
+    [*Mandate Matrix & ActivityPub for large platforms*],
+    sub: [Require interoperability for any SSMI with 10M+ Indian users. Break the network effect lock-in.],
+  )
+  bullet(
+    dot-color: t.blue,
+    [*Sovereign Govt Infrastructure: Tchap/BundesMessenger model*],
+    sub: [Move all public service communications to an auditable, domestic Matrix-based stack.],
+  )
+  bullet(
+    dot-color: t.blue,
+    [*Upgrade DigiLocker to W3C Verifiable Credentials*],
+    sub: [Move from "fetching PDFs" to cryptographically portable, privacy-preserving identity tokens.],
+  )
+  bullet(
+    dot-color: t.blue,
+    [*Sovereign Education: Mandate FOSS in curricula*],
+    sub: [Stop training customers for foreign firms. Kerala's KITE model saved ₹3,000 Cr via open standards.],
+  )
+
+  pagebreak()
+
+  // ── SLIDE 12 · Conclusion ─────────────────────────────────────────
+  tag[Conclusion · 28–30 min]
+  v(0.5em)
+  slide-title[Beyond preaching]
+  subtitle[Sovereignty is built, not declared.]
+  divider()
+  v(1em)
+
+  block(
+    width: 100%,
+    inset: (left: 14pt, right: 16pt, top: 14pt, bottom: 14pt),
+    stroke: (left: 3pt + t.blue),
+  )[
+    #text(size: 21pt, style: "italic", fill: t.heading)[
+      "India doesn't need to ask permission to participate in the global digital economy on its own terms. It has already proven it can build the foundations — with UPI, with Aadhaar, with ONDC. The question is whether it finishes the job."
+    ]
+  ]
+
+  pagebreak()
+
+  // ── SLIDE 13 · Thank You ──────────────────────────────────────────
+  block(
+    width: 100%,
+    height: 100%,
+    fill: t.page-fill,
+    inset: (x: 2.4cm, y: 2.4cm),
+  )[
     #v(2em)
-    #text(size: 14pt, fill: t.muted)[Questions welcome]
+    #align(center)[
+      #text(size: 11pt, weight: "bold", fill: t.muted)[THANK YOU]
+      #v(0.6em)
+      #text(size: 35pt, weight: "bold")[James Reilly]
+      #line(length: 2.4cm, stroke: 1.5pt + t.blue)
+      #v(0.4em)
+      #text(size: 15pt, fill: t.midblue)[
+        #link("https://reilly.asia")[reilly.asia] · #link("https://linkedin.com/in/jreilly112")[linkedin.com/in/jreilly112]
+      ]
+      #v(0.4em)
+      #text(size: 13pt, fill: t.muted)[
+        Open Source Advocate & IT Consultant\
+        FOSS United · AlmaLinux\
+        formerly Beeper (now Automattic) · Element
+      ]
+      #v(2em)
+      #text(size: 14pt, fill: t.muted)[Questions welcome]
+    ]
   ]
-]
 
-pagebreak()
+  pagebreak()
 
-// ── SLIDE 14 · Key References ─────────────────────────────────────
-tag[Bibliography]
-v(0.5em)
-slide-title[Key references & sources]
-subtitle[Selected legal and technical foundations.]
-divider()
+  // ── SLIDE 14 · Key References ─────────────────────────────────────
+  tag[Bibliography]
+  v(0.5em)
+  slide-title[Key references & sources]
+  subtitle[Selected legal and technical foundations.]
+  divider()
 
-set text(size: 12pt)
-grid(
-  columns: (1fr, 1fr),
-  gutter: 2em,
-  [
-    *Legal Foundations* \
-    #v(0.4em)
-    - *Electric Telegraph Company Act 1850* (13 & 14 Vict. c. lxxxvi).
-    - *Digital Markets Act (DMA)*, Regulation (EU) 2022/1925.
-    - *GDPR*, Regulation (EU) 2016/679.
-    - *India DPDP Act*, Act No. 40 of 2023.
-    - *RBI Directive* on Payment Data Storage (2018).
+  set text(size: 12pt)
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 2em,
+    [
+      *Legal Foundations* \
+      #v(0.4em)
+      - *Electric Telegraph Company Act 1850* (13 & 14 Vict. c. lxxxvi).
+      - *Digital Markets Act (DMA)*, Regulation (EU) 2022/1925.
+      - *GDPR*, Regulation (EU) 2016/679.
+      - *India DPDP Act*, Act No. 40 of 2023.
+      - *RBI Directive* on Payment Data Storage (2018).
 
-    #v(1em)
-    *Technical Standards* \
-    #v(0.4em)
-    - *Matrix protocol* (matrix.org) - IETF/W3C candidate.
-    - *ActivityPub* (W3C Social Web Working Group).
-    - *SMTP* (RFC 821/5321).
-    - *UPI API Specifications* (NPCI).
-  ],
-  [
-    *Reports & Incidents* \
-    #v(0.4em)
-    - *German MoD*, Taurus Leak Investigation (March 2024).
-    - *US DoD IG*, Signalgate Report (December 2025).
-    - *NPCI*, UPI Monthly Statistics (August 2025).
-    - *Meta Newsroom*, Threads ActivityPub Interop (2024).
+      #v(1em)
+      *Technical Standards* \
+      #v(0.4em)
+      - *Matrix protocol* (matrix.org) - IETF/W3C candidate.
+      - *ActivityPub* (W3C Social Web Working Group).
+      - *SMTP* (RFC 821/5321).
+      - *UPI API Specifications* (NPCI).
+    ],
+    [
+      *Reports & Incidents* \
+      #v(0.4em)
+      - *German MoD*, Taurus Leak Investigation (March 2024).
+      - *The Atlantic*, #link("https://www.theatlantic.com/politics/archive/2025/03/trump-administration-accidentally-texted-me-its-war-plans/682151/")[Signalgate Report] (March 2025).
+      - *NPCI*, UPI Monthly Statistics (August 2025).
+      - *Meta Newsroom*, Threads ActivityPub Interop (2024).
 
-    #v(1em)
-    *Sovereign Deployments* \
-    #v(0.4em)
-    - *Tchap* (French Government).
-    - *BundesMessenger* (German Public Administration).
-    - *BwMessenger* (German Armed Forces).
-    - *TI-Messenger* (German Healthcare).
-  ]
-)
-
+      #v(1em)
+      *Sovereign Deployments* \
+      #v(0.4em)
+      - *Tchap* (French Government).
+      - *BundesMessenger* (German Public Administration).
+      - *BwMessenger* (German Armed Forces).
+      - *TI-Messenger* (German Healthcare).
+    ],
+  )
 } // end slides()

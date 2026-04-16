@@ -22,8 +22,7 @@
   line(length: 100%, stroke: 0.5pt + gray)
   grid(
     columns: (1fr, auto),
-    text(weight: "bold", fill: rgb("#185FA5"), [Slide #num]),
-    text(style: "italic", fill: gray, time)
+    text(weight: "bold", fill: rgb("#185FA5"), [Slide #num]), text(style: "italic", fill: gray, time),
   )
   v(0.5em)
 }
@@ -34,7 +33,7 @@
     inset: 8pt,
     radius: 4pt,
     width: 100%,
-    text(style: "italic", fill: rgb("#555555"), body)
+    text(style: "italic", fill: rgb("#555555"), body),
   )
 }
 
@@ -42,7 +41,7 @@
   block(
     stroke: (left: 2pt + rgb("#185FA5")),
     inset: (left: 12pt, top: 4pt, bottom: 4pt),
-    text(style: "italic", body)
+    text(style: "italic", body),
   )
 }
 
@@ -65,12 +64,12 @@ CSJMU Conference, Kanpur · April 17–18, 2026 \
 
 Good morning — and thank you to the Atal Bihari Vajpayee School of Legal Studies and CSJMU for having me. It's a privilege to be here alongside so many distinguished legal scholars and policymakers.
 
-I want to be upfront: I'm not primarily a lawyer. I've spent the last several years building software inside the open-source messaging world — specifically at Beeper, which is now part of Automattic, and at Element, which is the primary client for the Matrix protocol. That work put me right in the middle of the EU's Digital Markets Act debates, watching interoperability mandates land in real code in real time.
+I want to be upfront: I'm not a lawyer. I've spent the last several years building software inside the open-source messaging world — specifically at Beeper, which is now part of Automattic, and at Element, which is the primary client for the Matrix protocol. That work put me right in the middle of the EU's Digital Markets Act debates, watching interoperability mandates land in real code in real time.
 
 So my perspective today is a practitioner's perspective: what does digital sovereignty actually look like from inside the technology stack? And what does India need to do to get there?
 
 #slide-num("2", "0–3 min")
-Most of us in this room think of WhatsApp as an app. I want you to think of it as a utility — like water, or electricity, or the telephone network.
+Most of us in this room think of WhatsApp, Telegram, Facebook Messenger, Instagram as apps. But in my opinion Instant Messaging and Calling should be a utility — like water, or electricity, or the existing telephone network!
 
 In 1850, a British court ruled that a telegraph company could not discriminate between senders. It was the first infrastructure law for communications #super[1]. The logic was simple: if something becomes essential to how society functions, it can't be left entirely to the discretion of its owner.
 
