@@ -19,6 +19,14 @@ build: _ensure-deps
 compile file: _ensure-deps
     typst compile {{file}}
 
+# Build self-contained HTML slideshow (light 16:9 by default)
+html file="slides-16-9.typ" out="slides.html": _ensure-deps
+    python3 build-html.py {{file}} {{out}}
+
+# Build self-contained HTML document from script
+html-script: _ensure-deps
+    python3 build-html.py script.typ script.html --mode document
+
 # Watch slides-content.typ and recompile 4:3 on change
 watch: _ensure-deps
     typst watch slides.typ slides-4-3.pdf

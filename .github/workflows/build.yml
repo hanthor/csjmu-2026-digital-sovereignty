@@ -37,6 +37,12 @@ jobs:
       - name: Compile speaker script
         run: typst compile script.typ script.pdf
 
+      - name: Build HTML slideshow
+        run: python3 build-html.py slides-16-9.typ slides.html
+
+      - name: Build HTML script
+        run: python3 build-html.py script.typ script.html --mode document
+
       - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -50,6 +56,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add slides-4-3.pdf slides-16-9.pdf slides-dark-4-3.pdf slides-dark-16-9.pdf script.pdf
+          git add slides-4-3.pdf slides-16-9.pdf slides-dark-4-3.pdf slides-dark-16-9.pdf script.pdf slides.html script.html
           git diff --staged --quiet || git commit -m "chore: update compiled PDFs [skip ci]"
           git push
