@@ -77,7 +77,6 @@
   pagebreak()
 
   // ── SLIDE 2 · The Utility Question ─────────────────────────────────
-  tag[Opening · 0–3 min]
   v(0.5em)
   slide-title[The utility question]
   subtitle[When did messaging become infrastructure?]
@@ -111,7 +110,6 @@
   pagebreak()
 
   // ── SLIDE 3 · Definition ───────────────────────────────────────────
-  tag[Definition · 3–5 min]
   v(0.5em)
   slide-title[What sovereignty actually means]
   subtitle[Not isolation. Strategic autonomy.]
@@ -149,7 +147,6 @@
   pagebreak()
 
   // ── SLIDE 4 · EU Case Study ────────────────────────────────────────
-  tag[EU Case Study · 5–10 min]
   v(0.5em)
   slide-title[How Europe built its regulatory shield]
   subtitle[Two instruments. One decade. Global impact.]
@@ -174,7 +171,6 @@
   pagebreak()
 
   // ── SLIDE 5a · Incident A ──────────────────────────────────────────
-  tag[Security Risk · 10–12 min]
   v(0.5em)
   slide-title[Two incidents that changed the conversation]
   subtitle[1. The Taurus Leak (Germany)]
@@ -206,7 +202,6 @@
   pagebreak()
 
   // ── SLIDE 5b · Incident B ──────────────────────────────────────────
-  tag[Security Risk · 12–15 min]
   v(0.5em)
   slide-title[Two incidents that changed the conversation]
   subtitle[2. Signalgate (USA)]
@@ -238,7 +233,6 @@
   pagebreak()
 
   // ── SLIDE 6 · The Stack ────────────────────────────────────────────
-  tag[The Core Argument · 15 min]
   v(0.5em)
   slide-title[The sovereignty stack]
   subtitle[Law without infrastructure is a promise you can't keep.]
@@ -301,7 +295,6 @@
   pagebreak()
 
   // ── SLIDE 7 · India's Wins ─────────────────────────────────────────
-  tag[India's Existing Wins · 15–17 min]
   v(0.5em)
   slide-title[India already invented this playbook]
   subtitle[UPI, Aadhaar, ONDC — India's open protocol advantage.]
@@ -326,7 +319,6 @@
   pagebreak()
 
   // ── SLIDE 8 · Protocol Map ─────────────────────────────────────────
-  tag[Open Protocols · 17–22 min]
   v(0.5em)
   slide-title[The protocol map: India's wins and gaps]
   subtitle[Where open standards exist — and where mandate is still needed.]
@@ -466,7 +458,6 @@
   pagebreak()
 
   // ── SLIDE 9 · DPDP vs GDPR ────────────────────────────────────────
-  tag[India's Opportunity · 22–24 min]
   v(0.5em)
   slide-title[India's DPDP Act vs GDPR]
   subtitle[Strong law — but enforcement infrastructure is missing.]
@@ -506,7 +497,6 @@
   pagebreak()
 
   // ── SLIDE 10 · Human Capital ──────────────────────────────────────
-  tag[India's Opportunity · 24–26 min]
   v(0.5em)
   slide-title[The human capital advantage]
   subtitle[India has the talent. The obstacle is cultural, not technical.]
@@ -540,7 +530,6 @@
   pagebreak()
 
   // ── SLIDE 11 · Concrete Steps ─────────────────────────────────────
-  tag[What India Should Do · 26–28 min]
   v(0.5em)
   slide-title[Concrete steps, not aspirations]
   subtitle[Each one has a working precedent.]
@@ -575,7 +564,6 @@
   pagebreak()
 
   // ── SLIDE 12 · Conclusion ─────────────────────────────────────────
-  tag[Conclusion · 28–30 min]
   v(0.5em)
   slide-title[Beyond preaching]
   subtitle[Sovereignty is built, not declared.]
@@ -625,7 +613,6 @@
   pagebreak()
 
   // ── SLIDE 14 · Key References ─────────────────────────────────────
-  tag[Bibliography]
   v(0.5em)
   slide-title[Key references & sources]
   subtitle[Selected legal and technical foundations.]

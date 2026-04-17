@@ -15,6 +15,7 @@ James Reilly · International Conference on Cybersecurity Law & Governance · Ap
 | [script.pdf](./script.pdf) | Speaker script |
 | [slides.html](./slides.html) | Slides — interactive HTML slideshow (16:9 light) |
 | [script.html](./script.html) | Speaker script — HTML |
+| [slides.pptx](./slides.pptx) | Slides — PowerPoint (16:9 light) |
 
 ## Source
 

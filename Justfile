@@ -30,6 +30,10 @@ html file="slides-16-9.typ" out="slides.html": _ensure-deps
 html-script: _ensure-deps
     python3 build-html.py script.typ script.html --mode document
 
+# Build PPTX (light 16:9 by default)
+pptx file="slides-16-9.typ" out="slides.pptx": _ensure-deps
+    uv run build-pptx.py {{file}} {{out}}
+
 # Watch slides-16-9.typ and recompile 16:9 on change (default for screen)
 watch: _ensure-deps
     typst watch slides-16-9.typ slides-16-9.pdf
